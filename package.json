@@ -4,8 +4,13 @@
   "description": "Package aware bunyan logger",
   "main": "index.js",
   "dependencies": {
+    "async": "^2.1.4",
+    "bunyan": "^1.8.5",
+    "bunyan-logstash-tcp": "^0.3.5",
+    "bunyan-tcp": "^0.9.3",
     "pkginfo": "^0.4.0",
-    "bunyan": "^1.8.5"
+    "request": "^2.79.0",
+    "simple-udp-stream": "^1.2.3"
   },
   "devDependencies": {},
   "scripts": {},

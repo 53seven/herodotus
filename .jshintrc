@@ -15,5 +15,6 @@
   "unused": "vars",
   "maxdepth": 4,
   "maxerr": 100,
-  "predef": ["describe", "it"]
+  "predef": ["describe", "it"],
+  "esversion": 6
 }
