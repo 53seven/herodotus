@@ -1,5 +1,5 @@
 {
-  "name": "outrider",
+  "name": "herodotus",
   "version": "2.0.0",
   "description": "Package aware bunyan logger",
   "main": "index.js",
@@ -16,7 +16,7 @@
   "scripts": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kiernanmcgowan/outrider.git"
+    "url": "git+https://github.com/kiernanmcgowan/herodotus.git"
   },
   "keywords": [
     "bunyan",
@@ -25,7 +25,7 @@
   "author": "kiernan <hi@kiernan.io> (http://kiernan.io/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kiernanmcgowan/outrider/issues"
+    "url": "https://github.com/kiernanmcgowan/herodotus/issues"
   },
-  "homepage": "https://github.com/kiernanmcgowan/outrider#readme"
+  "homepage": "https://github.com/kiernanmcgowan/herodotus#readme"
 }

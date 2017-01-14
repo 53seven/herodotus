@@ -1,2 +1,2 @@
 // index.js
-module.exports = require('./lib/outrider');
+module.exports = require('./lib/herodotus');
