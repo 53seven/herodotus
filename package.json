@@ -6,14 +6,24 @@
   "dependencies": {
     "async": "^2.1.4",
     "bunyan": "^1.8.5",
-    "bunyan-logstash-tcp": "^0.3.5",
-    "bunyan-tcp": "^0.9.3",
-    "pkginfo": "^0.4.0",
-    "request": "^2.79.0",
-    "simple-udp-stream": "^1.2.3"
+    "herodotus-transport": "^0.1.0",
+    "pkginfo": "^0.4.0"
   },
-  "devDependencies": {},
-  "scripts": {},
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^3.15.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.2.0",
+    "sinon": "^1.17.7"
+  },
+  "scripts": {
+    "preversion": "npm test",
+    "test": "npm run lint && npm run cover && npm run check-coverage",
+    "lint": "./node_modules/./.bin/eslint index.js lib/ test/",
+    "cover": "./node_modules/.bin/istanbul cover node_modules/.bin/_mocha -- --recursive test",
+    "check-coverage": "./node_modules/.bin/istanbul check-coverage --statements 100 --functions 100 --branches 100 --lines 100",
+    "view-coverage": "open ./coverage/lcov-report/index.html"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kiernanmcgowan/herodotus.git"
@@ -22,7 +32,7 @@
     "bunyan",
     "logger"
   ],
-  "author": "kiernan <hi@kiernan.io> (http://kiernan.io/)",
+  "author": "kiernan <kiernan@537.io> (http://537.io/)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/kiernanmcgowan/herodotus/issues"
