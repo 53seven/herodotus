@@ -1,6 +1,8 @@
 herodotus
 ===
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/53seven/herodotus.svg)](https://greenkeeper.io/)
+
 ```js
 npm install herodotus
 ```
