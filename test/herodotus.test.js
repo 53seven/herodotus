@@ -44,7 +44,7 @@ describe('herodotus', () => {
     process.env.HERODOTUS_TOKEN = 'a token';
     const transport = (opts) => {
       expect(opts).to.have.property('api_token', process.env.HERODOTUS_TOKEN);
-      expect(opts).to.have.property('server', 'http://herodotus.io/log');
+      expect(opts).to.have.property('server', 'https://herodotus.io/log');
     };
     herodotus(pck, transport);
   });
