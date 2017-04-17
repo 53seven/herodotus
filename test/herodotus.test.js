@@ -12,6 +12,7 @@ describe('herodotus', () => {
   beforeEach(() => {
     delete process.env.HERODOTUS_TOKEN;
     delete process.env.NODE_LOG_LOCATION;
+    delete process.env.NODE_ENV;
     pck.version = `0.0.${minor_count}`;
     minor_count++;
   });
@@ -27,15 +28,23 @@ describe('herodotus', () => {
     expect(_.isFunction(logger.child)).to.be.true;
 
     // check that it has two streams, stdout and file
-    //console.log(logger.streams);
     expect(logger.streams).to.have.lengthOf(2);
-    expect(_.map(logger.streams, 'type')).to.include('stream', 'file');
+    expect(_.map(logger.streams, 'type')).to.include('stream', 'rotating-file');
+  });
+
+  it('should create a debug logger when NODE_ENV=develop', () => {
+    process.env.NODE_ENV = 'develop';
+    const logger = herodotus(pck);
+
+    // check that it has two streams, stdout and file
+    expect(logger.streams).to.have.lengthOf(2);
+    expect(_.map(logger.streams, 'type')).to.include('raw', 'rotating-file');
   });
 
   it('should be able to change file log location via NODE_LOG_LOCATION', () => {
     process.env.NODE_LOG_LOCATION = '/whimmy/wham/wazzle';
     const logger = herodotus(pck);
-    const stream = _.find(logger.streams, {type: 'file'});
+    const stream = _.find(logger.streams, {type: 'rotating-file'});
     expect(stream).to.have.property('path');
     expect(stream.path).to.contain(process.env.NODE_LOG_LOCATION);
   });
