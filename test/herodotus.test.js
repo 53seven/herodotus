@@ -28,8 +28,8 @@ describe('herodotus', () => {
     expect(_.isFunction(logger.child)).to.be.true;
 
     // check that it has two streams, stdout and file
-    expect(logger.streams).to.have.lengthOf(2);
-    expect(_.map(logger.streams, 'type')).to.include('stream', 'rotating-file');
+    expect(logger.streams).to.have.lengthOf(1);
+    expect(_.map(logger.streams, 'type')).to.include('stream');
   });
 
   it('should create a debug logger when NODE_ENV=develop', () => {
@@ -37,11 +37,11 @@ describe('herodotus', () => {
     const logger = herodotus(pck);
 
     // check that it has two streams, stdout and file
-    expect(logger.streams).to.have.lengthOf(2);
-    expect(_.map(logger.streams, 'type')).to.include('raw', 'rotating-file');
+    expect(logger.streams).to.have.lengthOf(1);
+    expect(_.map(logger.streams, 'type')).to.include('raw');
   });
 
-  it('should be able to change file log location via NODE_LOG_LOCATION', () => {
+  it('should write to a file when NODE_LOG_LOCATION is set', () => {
     process.env.NODE_LOG_LOCATION = '/whimmy/wham/wazzle';
     const logger = herodotus(pck);
     const stream = _.find(logger.streams, {type: 'rotating-file'});
@@ -73,8 +73,8 @@ describe('herodotus', () => {
   it('should create a herodotus-transport stream if a HERODOTUS_TOKEN is present', () => {
     process.env.HERODOTUS_TOKEN = 'a token';
     const logger = herodotus(pck);
-    expect(logger.streams).to.have.lengthOf(3);
-    expect(_.map(logger.streams, 'type')).to.include('stream', 'file', 'raw');
+    expect(logger.streams).to.have.lengthOf(2);
+    expect(_.map(logger.streams, 'type')).to.include('stream', 'raw');
   });
 
 });
