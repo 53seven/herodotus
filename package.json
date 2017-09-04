@@ -7,7 +7,7 @@
     "async": "^2.1.4",
     "bunyan": "^1.8.5",
     "bunyan-debug-stream": "^1.0.8",
-    "herodotus-transport": "^0.1.0",
+    "herodotus-transport": "^0.1.1",
     "pkginfo": "^0.4.0"
   },
   "devDependencies": {
