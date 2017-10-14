@@ -13,6 +13,7 @@ describe('herodotus', () => {
     delete process.env.HERODOTUS_TOKEN;
     delete process.env.NODE_LOG_LOCATION;
     delete process.env.NODE_ENV;
+    delete process.env.UP_STAGE;
     pck.version = `0.0.${minor_count}`;
     minor_count++;
   });
@@ -33,12 +34,24 @@ describe('herodotus', () => {
   });
 
   it('should create a debug logger when NODE_ENV=develop', () => {
-    process.env.NODE_ENV = 'develop';
+    process.env.NODE_ENV = 'development';
     const logger = herodotus(pck);
 
     // check that it has two streams, stdout and file
     expect(logger.streams).to.have.lengthOf(1);
     expect(_.map(logger.streams, 'type')).to.include('raw');
+  });
+
+  it('should create an `up` stream when UP_STAGE exists', () => {
+    process.env.UP_STAGE = 'not null';
+    const logger = herodotus(pck);
+
+    // check that it has two streams, stdout and file
+    expect(logger.streams).to.have.lengthOf(1);
+    expect(_.map(logger.streams, 'type')).to.include('raw');
+
+    // run a log statement to make sure the stream does not fail
+    logger.info({foo: 'bar', msg: 'test'});
   });
 
   it('should write to a file when NODE_LOG_LOCATION is set', () => {
