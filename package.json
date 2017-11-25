@@ -1,6 +1,6 @@
 {
   "name": "herodotus",
-  "version": "2.7.1",
+  "version": "2.7.2",
   "description": "Package aware bunyan logger",
   "main": "index.js",
   "dependencies": {
