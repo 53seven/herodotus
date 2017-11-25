@@ -53,6 +53,7 @@ describe('herodotus', () => {
 
     // run a log statement to make sure the stream does not fail
     logger.info({foo: 'bar', msg: 'test'});
+    logger.debug({foo: 'bar', msg: 'test'});
   });
 
   it('should write to a file when NODE_LOG_LOCATION is set', () => {
