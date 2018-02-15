@@ -1,17 +1,26 @@
-/* global describe, it, beforeEach */
-const herodotus = require('../');
+/* global describe, it, beforeEach, afterEach */
 const chai = require('chai');
 const _ = require('lodash');
 const expect = chai.expect;
 
 describe('herodotus', () => {
 
+  let herodotus;
+
   beforeEach(() => {
+    herodotus = require('../');
+    // clear out our env vars
     delete process.env.HERODOTUS_TOKEN;
     delete process.env.NODE_LOG_LOCATION;
     delete process.env.NODE_ENV;
     delete process.env.UP_STAGE;
     delete process.env.STD_LOG_LEVEL;
+  });
+
+  afterEach(() => {
+    // unload the herodotus module
+    delete require.cache[require.resolve('../')];
+    delete require.cache[require.resolve('../lib/herodotus')];
   });
 
   it('should create a logging instance w/o any config', () => {
@@ -80,7 +89,7 @@ describe('herodotus', () => {
     herodotus(transport);
   });
 
-  it.skip('should keep loggers as singletons for same package.json', () => {
+  it('should keep loggers as singletons for same package.json', () => {
     const logger1 = herodotus();
     const logger2 = herodotus();
     expect(logger1).to.be.equal(logger2);
