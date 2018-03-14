@@ -4,9 +4,10 @@
   "description": "Package aware bunyan logger",
   "main": "index.js",
   "dependencies": {
-    "async": "^2.1.4",
     "@537/bunyan": "^2.0.2",
+    "async": "^2.1.4",
     "bunyan-debug-stream": "^1.0.8",
+    "chalk": "^2.3.2",
     "herodotus-transport": "^0.1.1",
     "pkginfo": "^0.4.0"
   },
