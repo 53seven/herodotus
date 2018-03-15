@@ -73,7 +73,7 @@ describe('herodotus', () => {
   });
 
   it('should write to a file when NODE_LOG_LOCATION is set', () => {
-    process.env.NODE_LOG_LOCATION = '/whimmy/wham/wazzle';
+    process.env.NODE_LOG_LOCATION = '/tmp/uhhhhhh';
     const logger = herodotus();
     const stream = _.find(logger.streams, {type: 'file'});
     expect(stream).to.have.property('path');
